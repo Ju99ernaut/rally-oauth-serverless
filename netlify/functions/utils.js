@@ -28,7 +28,7 @@ function register(data) {
     if (data) {
         process.env['RALLY_ACCESS_TOKEN'] = data.access_token;
         process.env['RALLY_TOKEN_EXPIRES'] = (data.expires_in || 3600) * 1000 + Date.now();
-        process.env['RALLY_REFRESH_TOKEN'] = data.refresh_token || undefined;
+        process.env['RALLY_REFRESH_TOKEN'] = data.refresh_token || process.env.RALLY_REFRESH_TOKEN;
         process.env['RALLY_TOKEN_TYPE'] = data.token_type;
     }
 }
