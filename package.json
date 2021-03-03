@@ -1,0 +1,28 @@
+{
+    "name": "rally-oauth-serverless",
+    "version": "1.0.0",
+    "description": "serverless functions for rally oauth",
+    "main": "index.html",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Ju99ernaut/rally-oauth-serverless.git"
+    },
+    "keywords": [
+        "rally",
+        "netlify",
+        "serverless",
+        "oauth"
+    ],
+    "author": "Brendon Ngirazi",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Ju99ernaut/rally-oauth-serverless/issues"
+    },
+    "homepage": "https://github.com/Ju99ernaut/rally-oauth-serverless#readme",
+    "dependencies": {
+        "axios": "^0.21.1"
+    }
+}
