@@ -1,7 +1,9 @@
 import { post, headers } from './utils';
+import querystring from 'querystring';
 
 const url = `${process.env.RALLY_API_URL}/oauth/userinfo`;
 
+// auth-callback redirects to app with user data as hash params
 export async function handler(event, context) {
     if (event.httpMethod === 'OPTIONS') {
         return {
@@ -33,11 +35,13 @@ export async function handler(event, context) {
         Authorization: `${token_type} ${access_token}`
     });
     const { status, data } = response;
+    const redirectUrl = process.env.URL;
     if (status === 200) {
         return {
-            statusCode: status,
-            headers,
-            body: JSON.stringify({ data })
+            statusCode: 302,
+            headers: {
+                Location: `${redirectUrl}#${querystring.stringify(data)}`
+            }
         }
     } else {
         return {
