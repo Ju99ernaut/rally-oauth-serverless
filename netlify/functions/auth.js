@@ -15,6 +15,7 @@ export async function handler(event, context) {
 
     const access_token = process.env.RALLY_ACCESS_TOKEN;
     const token_type = process.env.RALLY_TOKEN_TYPE || 'Bearer';
+    // redirect to registration
     if (!access_token) {
         return {
             statusCode: 401,
@@ -29,7 +30,7 @@ export async function handler(event, context) {
     const { status, data } = response;
     if (status === 200) {
         return {
-            statusCode: 301,
+            statusCode: 302,
             headers: {
                 Location: data.url
             }
