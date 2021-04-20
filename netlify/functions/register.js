@@ -16,6 +16,7 @@ export async function handler(event, context) {
 
     const response = await post(url, body);
     const { status, data } = response;
+    // continue to auth
     if (status === 200) {
         register(data);
         return {
