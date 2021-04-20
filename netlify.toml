@@ -1,5 +1,8 @@
+[build]
+  command = "npm run build"
+
 [template.enviroment]
     RALLY_API_URL = "https://api.rally.io/v1"
     RALLY_USERNAME = "username/email used during app registration"
     RALLY_PASSWORD = "password for application account"
-    CALLBACK_URL = "functions_uri/user"
+    CALLBACK_URL = "functions_uri/user.js"

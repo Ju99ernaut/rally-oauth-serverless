@@ -4,7 +4,8 @@
     "description": "serverless functions for rally oauth",
     "main": "index.html",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "cd netlify/functions && npm install"
     },
     "repository": {
         "type": "git",
@@ -21,8 +22,5 @@
     "bugs": {
         "url": "https://github.com/Ju99ernaut/rally-oauth-serverless/issues"
     },
-    "homepage": "https://github.com/Ju99ernaut/rally-oauth-serverless#readme",
-    "dependencies": {
-        "axios": "^0.21.1"
-    }
+    "homepage": "https://github.com/Ju99ernaut/rally-oauth-serverless#readme"
 }
