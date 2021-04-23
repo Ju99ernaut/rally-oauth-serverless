@@ -5,4 +5,4 @@
     RALLY_API_URL = "https://api.rally.io/v1"
     RALLY_USERNAME = "username/email used during app registration"
     RALLY_PASSWORD = "password for application account"
-    CALLBACK_URL = "functions_uri/user.js"
+    CALLBACK_URL = "https://app-name.netlify.app/.netlify/functions/user"
