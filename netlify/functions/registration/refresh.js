@@ -1,4 +1,4 @@
-import { post, headers, register } from './utils';
+import { post, headers, register } from '../utils';
 
 const url = `${process.env.RALLY_API_URL}/oauth/refresh`;
 
