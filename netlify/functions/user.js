@@ -1,7 +1,12 @@
 import { post, headers } from './utils';
 import querystring from 'querystring';
 
-const url = `${process.env.RALLY_API_URL}/oauth/userinfo`;
+const urlReg = `${process.env.RALLY_API_URL}/oauth/register`;
+const bodyReg = {
+    username: process.env.RALLY_USERNAME,
+    password: process.env.RALLY_PASSWORD
+}
+const urlUser = `${process.env.RALLY_API_URL}/oauth/userinfo`;
 
 // auth-callback redirects to app with user data as hash params
 export async function handler(event, context) {
@@ -12,8 +17,19 @@ export async function handler(event, context) {
         };
     }
 
-    const access_token = process.env.RALLY_ACCESS_TOKEN;
-    const token_type = process.env.RALLY_TOKEN_TYPE || 'Bearer';
+    // Register the app
+    const responseReg = await post(urlReg, bodyReg);
+    if (responseReg.status !== 200) {
+        return {
+            statusCode: responseReg.status,
+            headers,
+            body: JSON.stringify({ status: responseReg.statusText })
+        };
+    }
+
+    const access_token = data.access_token;
+    const token_type = data.token_type || 'Bearer';
+
     if (!access_token) {
         return {
             statusCode: 401,
@@ -31,23 +47,23 @@ export async function handler(event, context) {
         }
     }
 
-    const response = await post(url, { code }, {
+    const responseUser = await post(urlUser, { code }, {
         Authorization: `${token_type} ${access_token}`
     });
-    const { status, data } = response;
+    const { data } = responseUser;
     const redirectUrl = process.env.URL;
-    if (status === 200) {
+    if (responseUser.status === 200) {
         return {
             statusCode: 302,
             headers: {
-                Location: `${redirectUrl}#${querystring.stringify(data)}`
+                Location: `${redirectUrl}#${querystring.stringify({ ...data, code })}`
             }
         }
     } else {
         return {
-            statusCode: status,
+            statusCode: responseUser.status,
             headers,
-            body: JSON.stringify({ status: response.statusText })
+            body: JSON.stringify({ status: responseUser.statusText })
         }
     }
 }
