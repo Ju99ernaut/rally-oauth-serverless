@@ -56,7 +56,7 @@ export async function handler(event, context) {
         return {
             statusCode: 302,
             headers: {
-                Location: `${redirectUrl}#${querystring.stringify({ ...data, code })}`
+                Location: `${redirectUrl}#${querystring.stringify(data)}`
             }
         }
     } else {
