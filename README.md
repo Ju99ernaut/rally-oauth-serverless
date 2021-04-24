@@ -6,8 +6,7 @@ Serverless functions for rally OAuth
 
 ## Workflow
 
-![Rally OAuth](https://user-images.githubusercontent.com/48953676/115887451-3cd81600-a452-11eb-9284-5d8c46bed55c.png)
-
+![Rally OAuth](https://user-images.githubusercontent.com/48953676/115957994-b7ae3900-a505-11eb-9ac2-f3e11bcc9655.png)
 
 ## Examples
 
@@ -36,6 +35,7 @@ function auth() {
 ```
 
 ### React
+`rallyAuth.js`
 ```js
 const rallyAuth = {
     isAuthenticated: false,
@@ -52,11 +52,12 @@ const rallyAuth = {
 export default rallyAuth
 ```
 
+`Example.js`
 ```js
 import { useEffect, useState } from 'react';
 import rallyAuth from '../rallyAuth';
 
-const Page = () => {
+const Example = () => {
     let [isAuth, setIsAuth] = useState(rallyAuth.isAuthenticated);
     let [user, setUser] = useState(null);
 
@@ -96,5 +97,5 @@ const Page = () => {
     );
 };
 
-export default Page;
+export default Example;
 ```
